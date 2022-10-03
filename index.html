@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Random computer choice
+        function getComputerChoice(){
+            let roll = Math.floor(Math.random()*(4-1))+1
+            switch(roll){
+                case 1: return "ROCK"
+                    break;
+                case 2: return "PAPER"
+                    break;
+                case 3: return "SCISSORS"
+                    break;
+
+            }
+            
+        }
+        let computerSelection = getComputerChoice();
+        let playerSelection = prompt('Rock Paper Scissors',"rock").toUpperCase();
+        //let playerSelection = 'ROCK'
+        //declare outcome of round1
+        function playRound(computerSelection,playerSelection){
+            
+            if(computerSelection === playerSelection){
+                return('Tie');
+            }
+            
+            else if ((computerSelection === "ROCK" && playerSelection === "PAPER")||
+            (computerSelection === "PAPER" && playerSelection === "SCISSORS")||
+            (computerSelection === "SCISSORS" && playerSelection === "ROCK"))
+                { return('Winner')}
+            
+            else{return('You lose')}
+            
+            //console.log(playRound(playerSelection, computerSelection));
+        }
+        function game(){
+            for(let i = 0;i < 5;i++){
+                playRound(computerSelection,playerSelection)
+                if(playRound('Winner')){
+                    let playerScore = 0
+                    playerScore++
+                }
+                else if(playRound('Tie')){
+                    let tie = 0
+                    tie++
+                }
+                else{
+                    let compScore = 0
+                    compScore++
+                }
+                
+            }
+            
+            console.log(playRound())
+        }
+
+
+
+
+    </script>
+</body>
+</html>
