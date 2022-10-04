@@ -41,19 +41,20 @@
             
             //console.log(playRound(playerSelection, computerSelection));
         }
+        let results = playRound(computerSelection,playerSelection)
+        let compScore = 0
+        let playerScore = 0
         function game(){
+
             for(let i = 0;i < 5;i++){
                 playRound(computerSelection,playerSelection)
-                if(playRound('Winner')){
-                    let playerScore = 0
+                if(results = 'Winner'){
                     playerScore++
                 }
-                else if(playRound('Tie')){
-                    let tie = 0
-                    tie++
+                else if(results = 'Tie'){
+                    
                 }
                 else{
-                    let compScore = 0
                     compScore++
                 }
                 
@@ -61,7 +62,11 @@
             
             console.log(playRound())
         }
-
+        if(compScore > playerScore){
+            alert ('You lose')
+        }else{
+            ('You win!')
+        }
 
 
 
