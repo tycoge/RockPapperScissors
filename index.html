@@ -22,51 +22,49 @@
             }
             
         }
-        let computerSelection = getComputerChoice();
-        let playerSelection = prompt('Rock Paper Scissors',"rock").toUpperCase();
-        //let playerSelection = 'ROCK'
         //declare outcome of round1
         function playRound(computerSelection,playerSelection){
             
-            if(computerSelection === playerSelection){
-                return('Tie');
-            }
+            if(computerSelection === playerSelection)
+                {return('Tie');}
             
             else if ((computerSelection === "ROCK" && playerSelection === "PAPER")||
             (computerSelection === "PAPER" && playerSelection === "SCISSORS")||
             (computerSelection === "SCISSORS" && playerSelection === "ROCK"))
-                { return('Winner')}
+                { playerScore++;
+                    return('Winner');}
             
-            else{return('You lose')}
-            
-            //console.log(playRound(playerSelection, computerSelection));
+            else
+                {   compScore++;
+                    return('You lose');}
         }
-        let results = playRound(computerSelection,playerSelection)
+            //console.log(playRound(computerSelection,playerSelection))
+        
         let compScore = 0
         let playerScore = 0
+            
         function game(){
-
             for(let i = 0;i < 5;i++){
-                playRound(computerSelection,playerSelection)
-                if(results = 'Winner'){
-                    playerScore++
-                }
-                else if(results = 'Tie'){
-                    
-                }
-                else{
-                    compScore++
-                }
-                
+                let computerSelection = getComputerChoice();
+                let playerSelection = prompt('Rock Paper Scissors',"rock").toUpperCase();
+                playRound(computerSelection,playerSelection);
+                console.log(computerSelection)
+                //console.log(results)
+                //console.log(playRound(playerSelection, computerSelection))
+            }
+            if(compScore > playerScore){
+                return("you lose");
+            }
+            else if(playerScore > compScore){
+                return("You win");
+            }
+            else{
+                return("404");
             }
             
-            console.log(playRound())
+            
         }
-        if(compScore > playerScore){
-            alert ('You lose')
-        }else{
-            ('You win!')
-        }
+            console.log(game())
 
 
 
