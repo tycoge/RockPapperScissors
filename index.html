@@ -7,8 +7,14 @@
     <title>Document</title>
 </head>
 <body>
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+    <div id="pScore">Player Score: 0</div>
+    <div id="cScore">Computer Score: 0</div>
     <script>
-        //Random computer choice
+        let compScore = 0;
+        let playerScore = 0;
         function getComputerChoice(){
             let roll = Math.floor(Math.random()*(4-1))+1
             switch(roll){
@@ -22,52 +28,39 @@
             }
             
         }
-        //declare outcome of round1
+        const rock = document.querySelector('#rock');
+        rock.addEventListener('click',()=>{playRound(getComputerChoice(),'ROCK')});
+        const Paper = document.querySelector('#paper');
+        paper.addEventListener('click',()=>{playRound(getComputerChoice(),'PAPER')});
+        const scissors = document.querySelector('#scissors');
+        scissors.addEventListener('click',()=>{playRound(getComputerChoice(),'SCISSORS')});
+
         function playRound(computerSelection,playerSelection){
             
             if(computerSelection === playerSelection)
-                {alert('Tie this round');}
+                {alert(`Tie this round, you both chose ${playerSelection}`);}
             
             else if ((computerSelection === "ROCK" && playerSelection === "PAPER")||
                 (computerSelection === "PAPER" && playerSelection === "SCISSORS")||
                 (computerSelection === "SCISSORS" && playerSelection === "ROCK"))
                 { playerScore++;
                     alert(`You won this round! ${playerSelection} beats ${computerSelection}`);}
+                    
+            else if ((playerSelection === "ROCK" && computerSelection === "PAPER")||
+                (playerSelection === "PAPER" && computerSelection === "SCISSORS")||
+                (playerSelection === "SCISSORS" && computerSelection === "ROCK"))
+                { compScore++;
+                    alert(`You lost this round! ${computerSelection} beats ${playerSelection}`);}
             
             else
-                {   compScore++;
-                    alert('You lost this round.');}
+                { alert('ERROR');}
         }
             //console.log(playRound(computerSelection,playerSelection))
         
-        let compScore = 0;
-        let playerScore = 0;
-            
-        function game(){
-            for(let i = 0;i < 5;i++){
-                let computerSelection = getComputerChoice();
-                let playerSelection = prompt('Rock Paper Scissors',"rock").toUpperCase();
-                playRound(computerSelection,playerSelection);
-                console.log(computerSelection)
-                //console.log(results)
-                //console.log(playRound(playerSelection, computerSelection))
-            }
-            if(compScore > playerScore){
-                alert("you lose");
-            }
-            else if(playerScore > compScore){
-                alert("You win");
-            }
-            else{
-                alert("Tie");
-            }
-            
-            
-        }
-           game()
 
 
 
     </script>
 </body>
 </html>
+
