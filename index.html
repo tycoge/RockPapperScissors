@@ -28,6 +28,10 @@
             }
             
         }
+        
+        const pScore = document.querySelector('#pScore');
+        const cScore = document.querySelector('#cScore');
+
         const rock = document.querySelector('#rock');
         rock.addEventListener('click',()=>{playRound(getComputerChoice(),'ROCK')});
         const Paper = document.querySelector('#paper');
@@ -44,16 +48,20 @@
                 (computerSelection === "PAPER" && playerSelection === "SCISSORS")||
                 (computerSelection === "SCISSORS" && playerSelection === "ROCK"))
                 { playerScore++;
+                    if(playerScore === 5){alert(`You win!`)}
                     alert(`You won this round! ${playerSelection} beats ${computerSelection}`);}
                     
             else if ((playerSelection === "ROCK" && computerSelection === "PAPER")||
                 (playerSelection === "PAPER" && computerSelection === "SCISSORS")||
                 (playerSelection === "SCISSORS" && computerSelection === "ROCK"))
                 { compScore++;
+                    if(compScore === 5){alert(`You lose`)}
                     alert(`You lost this round! ${computerSelection} beats ${playerSelection}`);}
             
             else
                 { alert('ERROR');}
+                pScore.textContent = `Player Score:${compScore}`
+                cScore.textContent = `Computer Score:${playerScore}`
         }
             //console.log(playRound(computerSelection,playerSelection))
         
